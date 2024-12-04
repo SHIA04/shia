@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 11 Valmorida Group 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("purple4.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .titleHeader h1 {
+            margin-top: 70px;
+            color: #6a008b;
+            font-size: 40px;
+            font-weight: bolder;
+            text-align: center;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px mediumpurple;
+        }
+        .titleHeader p {
+            font-weight: bold;
+            font-size: 25px;
+            color: #6a008b;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .input {
+            text-align: center;
+            font-size: 20px;
+            color:  #6a008b;
+        }
+        .input button {
+        	background-color: rebeccapurple;
+        	font-size: 20px;
+        	box-shadow: 5px solid whitesmoke;
+        	font-weight: bold;
+        	color: whitesmoke;
+            margin-top: 20px;
+            border-radius: 15px;
+            width: 300px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="titleHeader">
+        <h1>Welcome To The Age Group Classification System!</h1>
+        <p>Enter your age and determine what classification you are in!</p>
+    </div>
+    
+    <div class="input">
+        <p>Click the button to input Age. Please input valid positive integers only, love!</p>
+        <button onclick="classifyAge()">Classify Age</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function classifyAge() {
+            let gew = true;
+
+            while (gew) {
+                // Step 1: Get user input
+                let age = prompt("Enter your Age (positive number only ^_^):");
+
+                if (age === null) {
+                    alert("Goodbye!");
+                    return;
+                }
+
+                age = parseFloat(age);
+                if (isNaN(age) || age <= 0 || !Number.isInteger(age)) {
+                    alert("Please, enter a valid positive integer, love ^_^.");
+                    continue;
+                }
+
+                let classification;
+                if (age >= 0 && age <= 12) {
+                    classification = "You are classified as a CHILD.";
+                } else if (age >= 13 && age <= 19) {
+                    classification = "You are classified as a TEENAGER.";
+                } else if (age >= 20 && age <= 64) {
+                    classification = "You are classified as an ADULT.";
+                } else {
+                    classification = "You are classified as a SENIOR CITIZEN.";
+                }
+
+                alert(classification);
+
+                let answer = prompt("Do you want to classify another Age? (Yes or No)");
+                if (answer === null || answer.trim().toLowerCase() !== "yes") {
+                    alert("Thank you for using the Age Classification System, love!");
+                    gew = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
